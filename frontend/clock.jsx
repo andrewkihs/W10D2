@@ -32,13 +32,16 @@ class Clock extends React.Component {
     let minutes = this.state.time.getMinutes();
     let seconds = this.state.time.getSeconds();
     return (
-      <div className="clock">
+      <div>
         <h1>Clock</h1>
-        <span>Time: </span>
-        <span>{hours}:{minutes}:{seconds}</span>
-        <br/>
-        <span>Date: </span>
-        <span>{this.state.time.toDateString()}</span>
+        <div className="clock">
+          <p>
+            <span>Time: </span><span>{hours}:{minutes}:{seconds} EST</span>
+          </p>
+          <p>
+            <span>Date: </span><span>{this.state.time.toDateString()}</span>
+          </p>
+        </div>
       </div>
     )
   }
