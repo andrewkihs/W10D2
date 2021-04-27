@@ -2,23 +2,36 @@ import React from 'react';
 
 class Tabs extends React.Component {
   constructor(props) {
+    super(props)
     this.state = {
-      index: 0,
+      index: 0
+    }
+    this.changeIndex = this.changeIndex.bind(this);
+  }
 
+  // changeIndex(e) {
+  //   console.log(e.target)
+  //   this.setState({
+  //     index: e.currentTarget.key
+  //   })
+  // }
+  changeIndex(index) {
+    return () => {
+      this.setState({index: index})
     }
   }
+ 
   render(){
-    const content = this.props.tabs[{this.state.index}].content
+    const tabArr = this.props.items
+    const content = tabArr[this.state.index].content
     return(
-      <div>
-        <ul>
-            <h1></h1>
-            {this.props.tabs.map(el =>{
-              
-            })
-            }
+      <div className="tab-container">
+        <ul className="tab">
+            <li>{tabArr.map((el, idx) => {
+            return <h1 key={idx} onClick={this.changeIndex(idx)}>{el.title}</h1>
+            })}</li>
         </ul>
-        <article>{content}</article>
+        <article className="content">{content}</article>
       </div>
     )
   }
