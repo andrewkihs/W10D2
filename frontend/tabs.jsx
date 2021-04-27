@@ -1,6 +1,7 @@
 import React from 'react';
 
 class Tabs extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -9,14 +10,11 @@ class Tabs extends React.Component {
     this.changeIndex = this.changeIndex.bind(this);
   }
 
-  // changeIndex(e) {
-  //   console.log(e.target)
-  //   this.setState({
-  //     index: e.currentTarget.key
-  //   })
-  // }
+  
   changeIndex(index) {
+    
     return () => {
+      
       this.setState({index: index})
     }
   }
@@ -24,12 +22,21 @@ class Tabs extends React.Component {
   render(){
     const tabArr = this.props.items
     const content = tabArr[this.state.index].content
-    return(
+    let selected = 'unselected';
+
+    return (
       <div className="tab-container">
+        <h1 className="title">Tabs</h1>
         <ul className="tab">
-            <li>{tabArr.map((el, idx) => {
-            return <h1 key={idx} onClick={this.changeIndex(idx)}>{el.title}</h1>
-            })}</li>
+          {tabArr.map((el, idx) => {
+            if (idx===this.state.index){
+              selected = "selected";
+            } else {
+              selected = 'unselected'
+            }
+            return (<li key={idx} id={selected} onClick={this.changeIndex(idx)}><h1 key={idx} >{el.title}</h1></li>)
+          })}
+      
         </ul>
         <article className="content">{content}</article>
       </div>

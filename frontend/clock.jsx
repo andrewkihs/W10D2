@@ -33,7 +33,7 @@ class Clock extends React.Component {
     let seconds = this.state.time.getSeconds();
     return (
       <div>
-        <h1>Clock</h1>
+        <h1 className="title">Clock</h1>
         <div className="clock">
           <p>
             <span>Time: </span><span>{hours}:{minutes}:{seconds} EST</span>
